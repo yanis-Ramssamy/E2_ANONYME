@@ -1,10 +1,14 @@
+import Hero from '../components/Hero';
+import { SITE_NAME } from '../config/constants';
+
 function Home() {
   return (
-    <section className="hero text-center">
-      <div className="container">
-        <h1>Accueil</h1>
-      </div>
-    </section>
+    <>
+      <Hero
+        title={SITE_NAME}
+        subtitle="Portail WebCraft Solutions — portfolio clients, catalogue de formations."
+      />
+    </>
   );
 }
 
