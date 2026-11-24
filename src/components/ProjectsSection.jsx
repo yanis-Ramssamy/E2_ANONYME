@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useFetch from '../hooks/useFetch';
 import useSearch from '../hooks/useSearch';
 import useFilter from '../hooks/useFilter';
@@ -6,12 +7,14 @@ import ErrorMessage from './ErrorMessage';
 import SearchBar from './SearchBar';
 import FilterBar from './FilterBar';
 import ProjectCard from './ProjectCard';
+import ProjectDetails from './ProjectDetails';
+import Modal from './Modal';
 import { URL_PROJETS } from '../config/constants';
 
 // Champs dans lesquels la recherche s'effectue
 const SEARCH_FIELDS = ['title', 'client'];
 
-// Section Projets : charge l'API 1, recherche + filtres, grille de cartes
+// Section Projets : charge l'API 1, recherche + filtres, grille de cartes, modal de détails
 function ProjectsSection() {
   const { data, isLoading, error } = useFetch(URL_PROJETS);
   const projects = data ? data.projects : [];
@@ -20,8 +23,9 @@ function ProjectsSection() {
   const { inputValue, setInputValue, results: searched } = useSearch(projects, SEARCH_FIELDS);
   const { filters, updateFilter, results } = useFilter(searched);
 
-  // Temporaire : le modal de détails arrive à l'étape 11
-  const handleSelect = (project) => console.log(project);
+  // Projet affiché dans le modal (null = modal fermé)
+  const [selectedProject, setSelectedProject] = useState(null);
+  const closeModal = () => setSelectedProject(null);
 
   return (
     <section id="projets">
@@ -54,13 +58,19 @@ function ProjectsSection() {
                 <ProjectCard
                   key={project.id}
                   project={project}
-                  onSelect={handleSelect}
+                  onSelect={setSelectedProject}
                 />
               ))}
             </div>
           </>
         )}
       </div>
+
+      {selectedProject && (
+        <Modal onClose={closeModal}>
+          <ProjectDetails project={selectedProject} />
+        </Modal>
+      )}
     </section>
   );
 }
