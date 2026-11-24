@@ -1,13 +1,21 @@
-/**
- * Composant racine de l'application.
- * Version provisoire : le routing et les pages arrivent aux étapes suivantes.
- */
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import Home from './pages/Home';
+import ProjectsPage from './pages/ProjectsPage';
+import CoursesPage from './pages/CoursesPage';
+import InscriptionPage from './pages/InscriptionPage';
+
 function App() {
   return (
-    <div className="container">
-      <h1>WebCraft Solutions</h1>
-    
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projets" element={<ProjectsPage />} />
+        <Route path="/formations" element={<CoursesPage />} />
+        <Route path="/inscription" element={<InscriptionPage />} />
+        <Route path="*" element={<h1 className="container">Page introuvable</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
