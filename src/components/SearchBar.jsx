@@ -1,0 +1,14 @@
+// Barre de recherche réutilisable (champ contrôlé par le parent)
+function SearchBar({ value, onChange, placeholder }) {
+  return (
+    <input
+      type="search"
+      value={value}
+      placeholder={placeholder}
+      aria-label={placeholder}
+      onChange={(event) => onChange(event.target.value)}
+    />
+  );
+}
+
+export default SearchBar;

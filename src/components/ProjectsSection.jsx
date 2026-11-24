@@ -1,12 +1,24 @@
 import useFetch from '../hooks/useFetch';
+import useSearch from '../hooks/useSearch';
+import useFilter from '../hooks/useFilter';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
+import SearchBar from './SearchBar';
+import FilterBar from './FilterBar';
 import ProjectCard from './ProjectCard';
 import { URL_PROJETS } from '../config/constants';
 
-// Section Projets : charge l'API 1 et affiche la grille de cartes
+// Champs dans lesquels la recherche s'effectue
+const SEARCH_FIELDS = ['title', 'client'];
+
+// Section Projets : charge l'API 1, recherche + filtres, grille de cartes
 function ProjectsSection() {
   const { data, isLoading, error } = useFetch(URL_PROJETS);
+  const projects = data ? data.projects : [];
+
+  // On cherche d'abord, puis on applique les filtres sur le résultat
+  const { inputValue, setInputValue, results: searched } = useSearch(projects, SEARCH_FIELDS);
+  const { filters, updateFilter, results } = useFilter(searched);
 
   // Temporaire : le modal de détails arrive à l'étape 11
   const handleSelect = (project) => console.log(project);
@@ -21,16 +33,32 @@ function ProjectsSection() {
         {error && <ErrorMessage message={error} />}
 
         {data && (
-          <div className="grille">
-            {data.projects.length === 0 && <p>Aucun projet trouvé.</p>}
-            {data.projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onSelect={handleSelect}
+          <>
+            <div className="filtres">
+              <SearchBar
+                value={inputValue}
+                onChange={setInputValue}
+                placeholder="Rechercher un projet..."
               />
-            ))}
-          </div>
+              <FilterBar
+                categories={data.categories}
+                technologies={data.technologies}
+                values={filters}
+                onChange={updateFilter}
+              />
+            </div>
+
+            <div className="grille">
+              {results.length === 0 && <p>Aucun projet trouvé.</p>}
+              {results.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  onSelect={handleSelect}
+                />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </section>
