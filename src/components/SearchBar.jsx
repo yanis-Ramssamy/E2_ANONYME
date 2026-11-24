@@ -1,4 +1,7 @@
-// Barre de recherche réutilisable (champ contrôlé par le parent)
+/**
+ * Barre de recherche réutilisable (champ contrôlé par le parent).
+ * @param {{ value: string, onChange: (text: string) => void, placeholder: string }} props
+ */
 function SearchBar({ value, onChange, placeholder }) {
   return (
     <input

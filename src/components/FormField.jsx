@@ -1,4 +1,11 @@
-// Un champ de formulaire : label + champ (input, select ou textarea) + message d'erreur
+/**
+ * Un champ de formulaire : label + champ (input, select ou textarea) + message d'erreur.
+ * @param {{
+ *   name: string, label: string, value: string, error?: string,
+ *   type?: 'text'|'email'|'tel'|'select'|'textarea', options?: string[],
+ *   placeholder?: string, onChange: (event: Event) => void
+ * }} props
+ */
 function FormField({ name, label, type = 'text', value, error, onChange, options = [], placeholder }) {
   const className = error ? 'invalide' : '';
 

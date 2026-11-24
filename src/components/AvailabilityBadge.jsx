@@ -1,4 +1,7 @@
-// Badge "Disponible" ou "Complet" d'une formation
+/**
+ * Badge "Disponible" ou "Complet" d'une formation.
+ * @param {{ available: boolean }} props
+ */
 function AvailabilityBadge({ available }) {
   if (available) {
     return <span className="badge-dispo">Disponible</span>;

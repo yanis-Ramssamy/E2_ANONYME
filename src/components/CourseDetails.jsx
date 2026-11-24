@@ -1,7 +1,10 @@
 import AvailabilityBadge from './AvailabilityBadge';
 import RegisterButton from './RegisterButton';
 
-// Contenu du modal pour une formation
+/**
+ * Contenu du modal pour une formation.
+ * @param {{ course: object }} props
+ */
 function CourseDetails({ course }) {
   return (
     <>

@@ -14,8 +14,15 @@ function FilterSelect({ name, options, allLabel, value, onChange }) {
   );
 }
 
-// Filtres réutilisables : seules les listes reçues en props sont affichées
-// (projets : categories + technologies / formations : + levels)
+/**
+ * Filtres réutilisables : seules les listes reçues en props sont affichées
+ * (projets : categories + technologies / formations : + levels).
+ * @param {{
+ *   categories?: string[], levels?: string[], technologies?: string[],
+ *   values: { category: string, level: string, technology: string },
+ *   onChange: (name: string, value: string) => void
+ * }} props
+ */
 function FilterBar({ categories, levels, technologies, values, onChange }) {
   return (
     <>

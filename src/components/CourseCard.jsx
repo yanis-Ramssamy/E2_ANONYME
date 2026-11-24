@@ -2,7 +2,11 @@ import TechBadges from './TechBadges';
 import AvailabilityBadge from './AvailabilityBadge';
 import RegisterButton from './RegisterButton';
 
-// Carte d'une formation. onSelect est appelé avec la formation quand on clique sur "Voir détails".
+/**
+ * Carte d'une formation.
+ * @param {{ course: object, onSelect: (course: object) => void }} props
+ *   onSelect est appelé avec la formation quand on clique sur "Voir détails".
+ */
 function CourseCard({ course, onSelect }) {
   return (
     <article className="carte">

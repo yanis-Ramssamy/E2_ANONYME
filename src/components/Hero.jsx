@@ -1,4 +1,7 @@
-// Section hero animée (l'animation est définie dans App.css)
+/**
+ * Section hero animée (l'animation est définie dans App.css).
+ * @param {{ title: string, subtitle: string }} props
+ */
 function Hero({ title, subtitle }) {
   return (
     <section className="hero text-center" id="accueil">

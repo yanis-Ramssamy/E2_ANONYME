@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 
-// Modal réutilisable (projets et formations).
-// Se ferme avec la croix, un clic à l'extérieur ou la touche Échap.
+/**
+ * Modal réutilisable (projets et formations).
+ * Se ferme avec la croix, un clic à l'extérieur ou la touche Échap.
+ * @param {{ onClose: () => void, children: React.ReactNode }} props
+ */
 function Modal({ onClose, children }) {
   useEffect(() => {
     const handleKeyDown = (event) => {

@@ -1,6 +1,9 @@
 import TechBadges from './TechBadges';
 
-// Contenu du modal pour un projet
+/**
+ * Contenu du modal pour un projet.
+ * @param {{ project: object }} props
+ */
 function ProjectDetails({ project }) {
   return (
     <>

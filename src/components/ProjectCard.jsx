@@ -1,6 +1,10 @@
 import TechBadges from './TechBadges';
 
-// Carte d'un projet. onSelect est appelé avec le projet quand on clique sur "Voir détails".
+/**
+ * Carte d'un projet.
+ * @param {{ project: object, onSelect: (project: object) => void }} props
+ *   onSelect est appelé avec le projet quand on clique sur "Voir détails".
+ */
 function ProjectCard({ project, onSelect }) {
   return (
     <article className="carte">

@@ -1,4 +1,7 @@
-// Liste de badges de technologies (utilisée par les cartes et les modals)
+/**
+ * Liste de badges de technologies (utilisée par les cartes et les modals).
+ * @param {{ technologies: string[] }} props
+ */
 function TechBadges({ technologies }) {
   return (
     <div>
