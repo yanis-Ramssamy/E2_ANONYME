@@ -1,11 +1,7 @@
+import CoursesSection from '../components/CoursesSection';
+
 function CoursesPage() {
-  return (
-    <section>
-      <div className="container">
-        <h1>Formations</h1>
-      </div>
-    </section>
-  );
+  return <CoursesSection />;
 }
 
 export default CoursesPage;
